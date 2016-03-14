@@ -3,6 +3,7 @@ var router = express.Router();
 var pg = require('pg');
 var path = require('path')
 var connectionString = require(path.join(__dirname, '../', './', 'config'));
+var cors = require('cors');
 
 router.get('/', function(req, res) {
     var results = [];
@@ -45,7 +46,7 @@ router.post('/', function(req, res) {
     });
 });
 
-router.put('/:party_id', function(req, res) {
+router.put('/:party_id', cors(), function(req, res) {
     var id = req.params.party_id;
 
     var data = {
